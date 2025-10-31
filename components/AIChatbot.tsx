@@ -283,7 +283,7 @@ export default function AIChatbot() {
       {!isMinimized && (
         <div className="flex flex-col h-full">
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-4 bg-gradient-to-b from-gray-800/20 to-gray-900/20">
+          <div className="flex-1 overflow-y-auto p-3 sm:p-4 pb-2 sm:pb-4 space-y-4 bg-gradient-to-b from-gray-800/20 to-gray-900/20">
             {messages.map((message, index) => (
               <div key={index} className="space-y-2">
                 <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -368,8 +368,8 @@ export default function AIChatbot() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input - always at bottom */}
-          <div className="flex-shrink-0 p-3 sm:p-4 border-t border-gray-700 bg-gray-800/50">
+          {/* Input - positioned with proper spacing */}
+          <div className="flex-shrink-0 p-3 sm:p-4 mt-2 sm:mt-4 border-t border-gray-700 bg-gray-800/50">
             <div className="flex space-x-2 sm:space-x-3">
               <input
                 ref={inputRef}
