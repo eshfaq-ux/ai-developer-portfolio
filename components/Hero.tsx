@@ -26,8 +26,8 @@ const Hero = () => {
     let timeouts: NodeJS.Timeout[] = []
     
     const typeText = (text: string, callback: () => void) => {
-      for (let i = 0; i <= text.length; i++) {
-        const delay = i === 0 ? 0 : (text[i-1] === ' ' ? 200 : Math.random() * 100 + 50)
+      for (let i = 1; i <= text.length; i++) {
+        const delay = i === 1 ? 0 : (text[i-2] === ' ' ? 200 : Math.random() * 100 + 50)
         const timeout = setTimeout(() => {
           setDisplayedName(text.slice(0, i))
           if (i === text.length) {
