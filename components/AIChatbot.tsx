@@ -83,28 +83,82 @@ export default function AIChatbot() {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
 
+      // Check if response is streaming
+      const contentType = response.headers.get('content-type')
+      if (contentType?.includes('text/plain')) {
+        // Handle streaming response
+        const reader = response.body?.getReader()
+        const decoder = new TextDecoder()
+        let streamedText = ''
+        
+        setIsTyping(false)
+        
+        // Add empty message that we'll update
+        const messageIndex = messages.length + 1
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          content: '',
+          timestamp: new Date().toISOString(),
+          intent: 'general',
+          suggestions: []
+        }])
+
+        if (reader) {
+          while (true) {
+            const { done, value } = await reader.read()
+            if (done) break
+            
+            const chunk = decoder.decode(value, { stream: true })
+            streamedText += chunk
+            
+            // Update the message in real-time
+            setMessages(prev => prev.map((msg, idx) => 
+              idx === messageIndex ? { ...msg, content: streamedText } : msg
+            ))
+          }
+        }
+        
+        setIsLoading(false)
+        setShowSuggestions(true)
+        return
+      }
+
+      // Handle regular JSON response (fallback)
       const data = await response.json()
       
       // Enhanced response handling
       const aiMessage = data.response || 'Sorry, I could not process your request.'
       
-      // Realistic typing delay based on response length and complexity
-      const baseDelay = Math.min(Math.max(aiMessage.length * 15, 1000), 3000)
-      const complexityBonus = data.intent === 'technical' ? 500 : 0
-      const typingDelay = baseDelay + complexityBonus
+      // Stop typing indicator and start streaming
+      setIsTyping(false)
       
-      setTimeout(() => {
-        setIsTyping(false)
-        setMessages(prev => [...prev, {
-          role: 'assistant',
-          content: aiMessage,
-          timestamp: new Date().toISOString(),
-          intent: data.intent,
-          suggestions: data.suggestions
-        }])
-        setIsLoading(false)
-        setShowSuggestions(true)
-      }, typingDelay)
+      // Add empty message that we'll update
+      const newMessage = {
+        role: 'assistant' as const,
+        content: '',
+        timestamp: new Date().toISOString(),
+        intent: data.intent,
+        suggestions: data.suggestions
+      }
+      
+      setMessages(prev => [...prev, newMessage])
+      
+      // Stream character by character
+      for (let i = 0; i <= aiMessage.length; i++) {
+        const currentText = aiMessage.slice(0, i)
+        
+        setMessages(prev => prev.map((msg, idx) => 
+          idx === prev.length - 1 ? { ...msg, content: currentText } : msg
+        ))
+        
+        // Delay between characters (30ms for smooth effect)
+        if (i < aiMessage.length) {
+          await new Promise(resolve => setTimeout(resolve, 30))
+        }
+      }
+      
+      setIsLoading(false)
+      setShowSuggestions(true)
 
     } catch (error) {
       console.error('Chatbot error:', error)
