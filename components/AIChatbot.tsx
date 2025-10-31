@@ -234,11 +234,13 @@ export default function AIChatbot() {
   }
 
   return (
-    <div className={`fixed bottom-4 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-6 bg-gray-900 rounded-2xl shadow-2xl border border-gray-700 z-50 transition-all duration-500 backdrop-blur-sm ${
-      isMinimized ? 'w-full sm:w-80 h-16' : 'w-full sm:w-[420px] h-[80vh] sm:h-[580px] max-h-[580px]'
+    <div className={`fixed bg-gray-900 rounded-2xl shadow-2xl border border-gray-700 z-50 transition-all duration-500 backdrop-blur-sm ${
+      isMinimized 
+        ? 'bottom-4 right-4 w-80 h-16' 
+        : 'bottom-4 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-6 w-full sm:w-[420px] h-[75vh] sm:h-[520px]'
     }`}>
-      {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-700 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-t-2xl relative overflow-hidden">
+      {/* Header - Fixed Height */}
+      <div className="flex items-center justify-between p-4 border-b border-gray-700 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-t-2xl relative overflow-hidden h-16">
         {/* Subtle animated background */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-700/10 to-gray-600/10 animate-pulse"></div>
         
@@ -281,9 +283,10 @@ export default function AIChatbot() {
       </div>
 
       {!isMinimized && (
-        <div className="flex flex-col h-full">
-          {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-3 sm:p-4 pb-2 sm:pb-4 space-y-4 bg-gradient-to-b from-gray-800/20 to-gray-900/20">
+        <>
+          {/* Messages - Flexible Height */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-gray-800/20 to-gray-900/20" 
+               style={{ height: 'calc(100% - 8rem)' }}>
             {messages.map((message, index) => (
               <div key={index} className="space-y-2">
                 <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -364,13 +367,12 @@ export default function AIChatbot() {
                   </div>
                 </div>
               </div>
-            )}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input - positioned with proper spacing */}
-          <div className="flex-shrink-0 p-3 sm:p-4 mt-2 sm:mt-4 border-t border-gray-700 bg-gray-800/50">
-            <div className="flex space-x-2 sm:space-x-3">
+          {/* Input Section - Fixed Height at Bottom */}
+          <div className="h-20 border-t border-gray-700 bg-gray-800/50 p-4 rounded-b-2xl">
+            <div className="flex space-x-3 mb-2">
               <input
                 ref={inputRef}
                 type="text"
@@ -378,22 +380,22 @@ export default function AIChatbot() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                 placeholder="Ask about skills, projects, experience..."
-                className="flex-1 border border-gray-600 rounded-xl px-3 sm:px-4 py-2 sm:py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-700/80 text-gray-100 placeholder-gray-400 transition-all duration-200"
+                className="flex-1 border border-gray-600 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-700/80 text-gray-100 placeholder-gray-400 transition-all duration-200"
                 disabled={isLoading}
               />
               <button
                 onClick={() => sendMessage()}
                 disabled={!input.trim() || isLoading}
-                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 text-white p-2 sm:p-3 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl disabled:shadow-none"
+                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 text-white px-4 py-2 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl disabled:shadow-none"
               >
                 <Send size={16} />
               </button>
             </div>
-            <p className="text-xs text-gray-500 mt-2 sm:mt-3 text-center">
+            <p className="text-xs text-gray-500 text-center">
               Powered by AI • Session: {sessionId.slice(0, 8)}
             </p>
           </div>
-        </div>
+        </>
       )}
     </div>
   )
