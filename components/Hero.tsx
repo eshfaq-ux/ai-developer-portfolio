@@ -17,8 +17,8 @@ const Hero = () => {
   const roles = useMemo(() => [
     'Full Stack Developer',
     'AI Integration Specialist', 
-    'React & Node.js Expert',
-    'Automation Engineer'
+    'Software Engineer',
+    'Web Application Developer'
   ], [])
   
   // Enhanced name typing effect with sound-like rhythm
@@ -195,12 +195,12 @@ const Hero = () => {
         
         <div className="mb-12">
           <h2 className={`text-2xl sm:text-3xl lg:text-4xl mb-6 font-medium transition-all duration-1000 delay-500 ${isNameComplete ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-gradient-x">
+            <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
               Full Stack Developer
             </span>
-            <span className="text-gray-300 mx-3 animate-pulse">&</span>
-            <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent animate-gradient-x">
-              AI Developer
+            <span className="text-gray-300 mx-3">&</span>
+            <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
+              AI Specialist
             </span>
           </h2>
           
