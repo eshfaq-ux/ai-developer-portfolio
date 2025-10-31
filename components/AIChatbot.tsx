@@ -234,8 +234,8 @@ export default function AIChatbot() {
   }
 
   return (
-    <div className={`fixed bottom-6 right-6 bg-gray-900 rounded-2xl shadow-2xl border border-gray-700 z-50 transition-all duration-500 backdrop-blur-sm ${
-      isMinimized ? 'w-80 h-16' : 'w-[420px] h-[640px]'
+    <div className={`fixed bottom-4 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-6 bg-gray-900 rounded-2xl shadow-2xl border border-gray-700 z-50 transition-all duration-500 backdrop-blur-sm ${
+      isMinimized ? 'w-full sm:w-80 h-16' : 'w-full sm:w-[420px] h-[90vh] sm:h-[640px] max-h-[640px]'
     }`}>
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-gray-700 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-t-2xl relative overflow-hidden">
@@ -283,7 +283,7 @@ export default function AIChatbot() {
       {!isMinimized && (
         <>
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 h-80 bg-gradient-to-b from-gray-800/20 to-gray-900/20">
+          <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-4 h-64 sm:h-80 bg-gradient-to-b from-gray-800/20 to-gray-900/20">
             {messages.map((message, index) => (
               <div key={index} className="space-y-2">
                 <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -370,9 +370,9 @@ export default function AIChatbot() {
 
           {/* Quick Actions */}
           {messages.length === 1 && (
-            <div className="px-4 py-2 border-t border-gray-700 bg-gray-800">
+            <div className="px-3 sm:px-4 py-2 border-t border-gray-700 bg-gray-800">
               <p className="text-xs text-gray-400 mb-2 font-medium">Quick questions:</p>
-              <div className="grid grid-cols-3 gap-1.5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
                 {quickActions.map((action, index) => (
                   <button
                     key={index}
@@ -388,8 +388,8 @@ export default function AIChatbot() {
           )}
 
           {/* Input */}
-          <div className="p-4 border-t border-gray-700 bg-gray-800/50">
-            <div className="flex space-x-3">
+          <div className="p-3 sm:p-4 border-t border-gray-700 bg-gray-800/50">
+            <div className="flex space-x-2 sm:space-x-3">
               <input
                 ref={inputRef}
                 type="text"
@@ -397,18 +397,18 @@ export default function AIChatbot() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                 placeholder="Ask about skills, projects, experience..."
-                className="flex-1 border border-gray-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-700/80 text-gray-100 placeholder-gray-400 transition-all duration-200"
+                className="flex-1 border border-gray-600 rounded-xl px-3 sm:px-4 py-2 sm:py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-700/80 text-gray-100 placeholder-gray-400 transition-all duration-200"
                 disabled={isLoading}
               />
               <button
                 onClick={() => sendMessage()}
                 disabled={!input.trim() || isLoading}
-                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 text-white p-3 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl disabled:shadow-none"
+                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 text-white p-2 sm:p-3 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl disabled:shadow-none"
               >
                 <Send size={16} />
               </button>
             </div>
-            <p className="text-xs text-gray-500 mt-3 text-center">
+            <p className="text-xs text-gray-500 mt-2 sm:mt-3 text-center">
               Powered by AI • Session: {sessionId.slice(0, 8)}
             </p>
           </div>
