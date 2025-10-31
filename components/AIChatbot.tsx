@@ -151,9 +151,9 @@ export default function AIChatbot() {
           idx === prev.length - 1 ? { ...msg, content: currentText } : msg
         ))
         
-        // Delay between characters (30ms for smooth effect)
+        // Delay between characters (8ms for fast smooth effect)
         if (i < aiMessage.length) {
-          await new Promise(resolve => setTimeout(resolve, 30))
+          await new Promise(resolve => setTimeout(resolve, 8))
         }
       }
       
