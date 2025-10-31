@@ -366,29 +366,29 @@ export default function AIChatbot() {
               </div>
             )}
             <div ref={messagesEndRef} />
+            
+            {/* Quick Actions - moved inside messages container */}
+            {messages.length === 1 && (
+              <div className="px-3 sm:px-4 py-2 mt-4 border border-gray-700 bg-gray-800 rounded-lg">
+                <p className="text-xs text-gray-400 mb-2 font-medium">Quick questions:</p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+                  {quickActions.map((action, index) => (
+                    <button
+                      key={index}
+                      onClick={() => sendMessage(action.query)}
+                      className="text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white px-2 py-1.5 rounded-md transition-colors border border-gray-600 hover:border-gray-500 text-center"
+                      disabled={isLoading}
+                    >
+                      <span className="block font-medium text-xs leading-tight">{action.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
-          {/* Quick Actions */}
-          {messages.length === 1 && (
-            <div className="px-3 sm:px-4 py-2 border-t border-gray-700 bg-gray-800">
-              <p className="text-xs text-gray-400 mb-2 font-medium">Quick questions:</p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
-                {quickActions.map((action, index) => (
-                  <button
-                    key={index}
-                    onClick={() => sendMessage(action.query)}
-                    className="text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white px-2 py-1.5 rounded-md transition-colors border border-gray-600 hover:border-gray-500 text-center"
-                    disabled={isLoading}
-                  >
-                    <span className="block font-medium text-xs leading-tight">{action.label}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Input */}
-          <div className="p-3 sm:p-4 border-t border-gray-700 bg-gray-800/50">
+          {/* Input - always at bottom */}
+          <div className="flex-shrink-0 p-3 sm:p-4 border-t border-gray-700 bg-gray-800/50">
             <div className="flex space-x-2 sm:space-x-3">
               <input
                 ref={inputRef}
