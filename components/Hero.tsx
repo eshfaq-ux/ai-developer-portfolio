@@ -179,12 +179,12 @@ const Hero = () => {
             Hello, I'm
           </p>
           <h1 className="leading-none mb-8" role="banner">
-            <span className="text-6xl sm:text-7xl lg:text-8xl font-bold">
-              <span className="bg-gradient-to-r from-indigo-400 via-blue-400 to-indigo-300 bg-clip-text text-transparent animate-gradient-x">
+            <span className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+              <span className="bg-gradient-to-r from-indigo-400 via-blue-400 to-indigo-300 bg-clip-text text-transparent">
                 {displayedName.split(' ')[0]}
               </span>
               {displayedName.split(' ')[1] && (
-                <span className="text-white font-light ml-4 sm:ml-6 animate-fade-in-up">
+                <span className="text-white font-light ml-3 sm:ml-4">
                   {displayedName.split(' ')[1]}
                 </span>
               )}
