@@ -103,7 +103,7 @@ const Hero = () => {
       clearInterval(intervalId)
       timeouts.forEach(clearTimeout)
     }
-  }, [isNameComplete, roles, roleIndex])
+  }, [isNameComplete, roles])
 
   // Optimized particles with better performance
   useEffect(() => {
