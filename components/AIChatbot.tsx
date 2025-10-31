@@ -281,9 +281,9 @@ export default function AIChatbot() {
       </div>
 
       {!isMinimized && (
-        <>
+        <div className="flex flex-col h-full">
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-4 h-64 sm:h-80 bg-gradient-to-b from-gray-800/20 to-gray-900/20">
+          <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-4 bg-gradient-to-b from-gray-800/20 to-gray-900/20">
             {messages.map((message, index) => (
               <div key={index} className="space-y-2">
                 <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -412,7 +412,7 @@ export default function AIChatbot() {
               Powered by AI • Session: {sessionId.slice(0, 8)}
             </p>
           </div>
-        </>
+        </div>
       )}
     </div>
   )
