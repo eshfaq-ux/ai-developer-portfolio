@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Send, Bot, User, Minimize2, Maximize2, RotateCcw, Copy, ExternalLink, Calendar } from 'lucide-react'
+import { Send, Bot, User, Minimize2, Maximize2, RotateCcw, Copy } from 'lucide-react'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -83,50 +83,8 @@ export default function AIChatbot() {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
 
-      // Check if response is streaming
-      const contentType = response.headers.get('content-type')
-      if (contentType?.includes('text/plain')) {
-        // Handle streaming response
-        const reader = response.body?.getReader()
-        const decoder = new TextDecoder()
-        let streamedText = ''
-        
-        setIsTyping(false)
-        
-        // Add empty message that we'll update
-        const messageIndex = messages.length + 1
-        setMessages(prev => [...prev, {
-          role: 'assistant',
-          content: '',
-          timestamp: new Date().toISOString(),
-          intent: 'general',
-          suggestions: []
-        }])
-
-        if (reader) {
-          while (true) {
-            const { done, value } = await reader.read()
-            if (done) break
-            
-            const chunk = decoder.decode(value, { stream: true })
-            streamedText += chunk
-            
-            // Update the message in real-time
-            setMessages(prev => prev.map((msg, idx) => 
-              idx === messageIndex ? { ...msg, content: streamedText } : msg
-            ))
-          }
-        }
-        
-        setIsLoading(false)
-        setShowSuggestions(true)
-        return
-      }
-
-      // Handle regular JSON response (fallback)
       const data = await response.json()
       
-      // Enhanced response handling
       const aiMessage = data.response || 'Sorry, I could not process your request.'
       
       // Stop typing indicator and start streaming
@@ -144,7 +102,7 @@ export default function AIChatbot() {
       setMessages(prev => [...prev, newMessage])
       
       // Stream character by character
-      for (let i = 0; i <= aiMessage.length; i++) {
+      for (let i = 1; i <= aiMessage.length; i++) {
         const currentText = aiMessage.slice(0, i)
         
         setMessages(prev => prev.map((msg, idx) => 
@@ -215,15 +173,12 @@ export default function AIChatbot() {
         >
           <Bot size={26} className="text-gray-300" />
           
-          {/* Pulse ring */}
           <div className="absolute inset-0 rounded-full border-2 border-gray-500 opacity-75 animate-ping"></div>
           
-          {/* AI Badge */}
           <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs font-semibold rounded-full w-7 h-7 flex items-center justify-center shadow-lg">
             AI
           </span>
           
-          {/* Tooltip */}
           <div className="absolute -top-14 right-0 bg-gray-800 text-gray-200 text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap shadow-xl border border-gray-600">
             Chat with Ashfaq's AI Assistant
             <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
@@ -239,9 +194,8 @@ export default function AIChatbot() {
         ? 'bottom-4 right-4 w-80 h-16' 
         : 'bottom-4 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-6 w-full sm:w-[420px] h-[75vh] sm:h-[520px]'
     }`}>
-      {/* Header - Fixed Height */}
+      {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-gray-700 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-t-2xl relative overflow-hidden h-16">
-        {/* Subtle animated background */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-700/10 to-gray-600/10 animate-pulse"></div>
         
         <div className="flex items-center space-x-3 relative z-10">
@@ -284,7 +238,7 @@ export default function AIChatbot() {
 
       {!isMinimized && (
         <>
-          {/* Messages - Flexible Height */}
+          {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-gray-800/20 to-gray-900/20" 
                style={{ height: 'calc(100% - 8rem)' }}>
             {messages.map((message, index) => (
@@ -331,7 +285,6 @@ export default function AIChatbot() {
                   </div>
                 </div>
                 
-                {/* Smart Suggestions */}
                 {message.role === 'assistant' && message.suggestions && showSuggestions && index === messages.length - 1 && (
                   <div className="ml-11 space-y-2">
                     <p className="text-xs text-gray-400 font-medium">Suggested follow-ups:</p>
@@ -367,10 +320,11 @@ export default function AIChatbot() {
                   </div>
                 </div>
               </div>
+            )}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input Section - Fixed Height at Bottom */}
+          {/* Input Section */}
           <div className="h-20 border-t border-gray-700 bg-gray-800/50 p-4 rounded-b-2xl">
             <div className="flex space-x-3 mb-2">
               <input
