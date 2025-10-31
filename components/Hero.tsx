@@ -12,7 +12,6 @@ const Hero = () => {
   const [roleIndex, setRoleIndex] = useState(0)
   const [isTyping, setIsTyping] = useState(false)
   const [particles, setParticles] = useState<Array<{id: number, x: number, y: number, size: number, speed: number, opacity: number}>>([])
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   
   const fullName = personal.name
   const roles = useMemo(() => [
@@ -21,19 +20,6 @@ const Hero = () => {
     'React & Node.js Expert',
     'Automation Engineer'
   ], [])
-  
-  // Mouse tracking for interactive effects
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100
-      })
-    }
-    
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
   
   // Enhanced name typing effect with sound-like rhythm
   useEffect(() => {
@@ -119,78 +105,53 @@ const Hero = () => {
     }
   }, [isNameComplete, roles, roleIndex])
 
-  // Enhanced particles with interactive behavior
+  // Optimized particles with better performance
   useEffect(() => {
-    const particleCount = 150
+    const particleCount = 50 // Reduced from 150
     const newParticles = Array.from({ length: particleCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      speed: Math.random() * 0.8 + 0.2,
-      opacity: Math.random() * 0.8 + 0.2
+      size: Math.random() * 2 + 1, // Smaller particles
+      speed: Math.random() * 0.5 + 0.1, // Slower movement
+      opacity: Math.random() * 0.6 + 0.2
     }))
     setParticles(newParticles)
 
     const animateParticles = () => {
-      setParticles(prev => prev.map(particle => {
-        const distanceFromMouse = Math.sqrt(
-          Math.pow(particle.x - mousePosition.x, 2) + 
-          Math.pow(particle.y - mousePosition.y, 2)
-        )
-        const mouseEffect = distanceFromMouse < 15 ? 1.5 : 1
-        
-        return {
-          ...particle,
-          y: particle.y <= -5 ? 105 : particle.y - (particle.speed * mouseEffect),
-          opacity: distanceFromMouse < 20 ? Math.min(particle.opacity * 1.5, 1) : particle.opacity
-        }
-      }))
+      setParticles(prev => prev.map(particle => ({
+        ...particle,
+        y: particle.y <= -5 ? 105 : particle.y - particle.speed
+      })))
     }
 
-    const interval = setInterval(animateParticles, 50)
+    const interval = setInterval(animateParticles, 100) // Slower animation (was 50ms)
     return () => clearInterval(interval)
-  }, [mousePosition])
+  }, []) // Removed mousePosition dependency for better performance
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-emerald-950 to-black pt-20 relative overflow-hidden">
-      {/* Enhanced Animated Particles */}
+      {/* Optimized Animated Particles */}
       <div className="absolute inset-0 pointer-events-none">
         {particles.map(particle => (
           <div
             key={particle.id}
-            className="absolute bg-gradient-to-r from-green-400 to-blue-400 rounded-full transition-all duration-100"
+            className="absolute bg-green-400 rounded-full"
             style={{
               left: `${particle.x}%`,
               top: `${particle.y}%`,
               width: `${particle.size}px`,
               height: `${particle.size}px`,
               opacity: particle.opacity,
-              boxShadow: `0 0 ${particle.size * 2}px rgba(34, 197, 94, 0.3)`,
-              transform: `scale(${particle.opacity})`,
             }}
           />
         ))}
       </div>
 
-      {/* Dynamic Background Pattern */}
+      {/* Simplified Background Pattern */}
       <div className="absolute inset-0 opacity-20">
-        <div 
-          className="absolute w-96 h-96 bg-indigo-500 rounded-full blur-3xl transition-all duration-1000"
-          style={{
-            top: `${20 + mousePosition.y * 0.1}%`,
-            left: `${10 + mousePosition.x * 0.1}%`,
-            transform: `scale(${1 + mousePosition.x * 0.002})`
-          }}
-        ></div>
-        <div 
-          className="absolute w-96 h-96 bg-blue-500 rounded-full blur-3xl transition-all duration-1000"
-          style={{
-            bottom: `${20 + mousePosition.y * 0.1}%`,
-            right: `${10 + mousePosition.x * 0.1}%`,
-            transform: `scale(${1 + mousePosition.y * 0.002})`
-          }}
-        ></div>
+        <div className="absolute w-96 h-96 bg-indigo-500 rounded-full blur-3xl top-20 left-10"></div>
+        <div className="absolute w-96 h-96 bg-blue-500 rounded-full blur-3xl bottom-20 right-10"></div>
       </div>
 
       {/* Content Layer with enhanced animations */}
