@@ -235,7 +235,7 @@ export default function AIChatbot() {
 
   return (
     <div className={`fixed bottom-4 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-6 bg-gray-900 rounded-2xl shadow-2xl border border-gray-700 z-50 transition-all duration-500 backdrop-blur-sm ${
-      isMinimized ? 'w-full sm:w-80 h-16' : 'w-full sm:w-[420px] h-[90vh] sm:h-[640px] max-h-[640px]'
+      isMinimized ? 'w-full sm:w-80 h-16' : 'w-full sm:w-[420px] h-[80vh] sm:h-[580px] max-h-[580px]'
     }`}>
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-gray-700 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-t-2xl relative overflow-hidden">
