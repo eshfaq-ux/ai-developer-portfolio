@@ -83,7 +83,7 @@ Current User Message: ${messages[messages.length - 1].content}
 
 Provide a helpful, specific response as Ashfaq's AI assistant. Use the knowledge context to give accurate, detailed information:`
 
-  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:streamGenerateContent?key=${apiKey}`, {
+  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -103,7 +103,8 @@ Provide a helpful, specific response as Ashfaq's AI assistant. Use the knowledge
 
   if (!response.ok) throw new Error(`Gemini API error: ${response.status}`)
   
-  return response.body
+  const data = await response.json()
+  return data.candidates?.[0]?.content?.parts?.[0]?.text
 }
 
 export async function POST(request: NextRequest) {
@@ -141,18 +142,9 @@ export async function POST(request: NextRequest) {
 
     if (apiKey) {
       try {
-        const stream = await callGeminiAPI(context.messages, apiKey, message)
+        aiResponse = await callGeminiAPI(context.messages, apiKey, message)
         
-        if (!stream) throw new Error('Empty response from Gemini')
-        
-        // Return streaming response
-        return new Response(stream, {
-          headers: {
-            'Content-Type': 'text/plain; charset=utf-8',
-            'Cache-Control': 'no-cache',
-            'Connection': 'keep-alive',
-          },
-        })
+        if (!aiResponse) throw new Error('Empty response from Gemini')
         
       } catch (apiError) {
         console.error('Gemini API error:', apiError)
