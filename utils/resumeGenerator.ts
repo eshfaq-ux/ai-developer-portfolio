@@ -85,27 +85,21 @@ export const generateResumePDF = (data: PortfolioData) => {
     pdf.setTextColor(...colors.text)
   }
 
-  // HEADER SECTION - Enhanced professional layout
-  pdf.setFontSize(20)
+  // HEADER SECTION - Exact original format
+  pdf.setFontSize(18)
   pdf.setFont('helvetica', 'bold')
   pdf.setTextColor(...colors.primary)
   
-  // Name with letter spacing effect
-  const nameText = data.personal.name.toUpperCase().split('').join(' ')
-  pdf.text(nameText, margin, yPosition)
-  yPosition += 12
+  // Name without letter spacing
+  pdf.text(data.personal.name.toUpperCase(), margin, yPosition)
+  yPosition += 10
   
-  // Contact info in single line - professional format
+  // Contact info concatenated (no separators)
   pdf.setFontSize(10)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.secondary)
   
-  const contactInfo = [
-    data.personal.location,
-    data.personal.email,
-    data.personal.phone || '',
-    data.personal.linkedin.replace('https://www.linkedin.com/in/', 'in/')
-  ].filter(info => info).join(' • ')
+  const contactInfo = `${data.personal.location}${data.personal.email}${data.personal.phone || ''}${data.personal.linkedin.replace('https://www.linkedin.com/in/', '')}`
   
   pdf.text(contactInfo, margin, yPosition)
   yPosition += 15
