@@ -49,18 +49,17 @@ interface PortfolioData {
     issuer: string
     date: string
     description: string
-    certificate?: string
   }[]
 }
 
-export const generateResumePDF = (data: PortfolioData) => {
+export const generateEnhancedResumePDF = (data: PortfolioData) => {
   const pdf = new jsPDF()
   let yPosition = 25
   const pageWidth = pdf.internal.pageSize.width
   const margin = 20
   const contentWidth = pageWidth - (margin * 2)
   
-  // Enhanced professional color scheme
+  // Enhanced color scheme matching the uploaded resume
   const colors = {
     primary: [0, 0, 0] as [number, number, number], // Black for headers
     secondary: [60, 60, 60] as [number, number, number], // Dark gray
@@ -82,10 +81,9 @@ export const generateResumePDF = (data: PortfolioData) => {
     pdf.setTextColor(...colors.primary)
     pdf.text(title.toUpperCase(), margin, yPosition)
     yPosition += 8
-    pdf.setTextColor(...colors.text)
   }
 
-  // HEADER SECTION - Enhanced professional layout
+  // HEADER - Enhanced layout matching uploaded resume
   pdf.setFontSize(20)
   pdf.setFont('helvetica', 'bold')
   pdf.setTextColor(...colors.primary)
@@ -95,7 +93,7 @@ export const generateResumePDF = (data: PortfolioData) => {
   pdf.text(nameText, margin, yPosition)
   yPosition += 12
   
-  // Contact info in single line - professional format
+  // Contact info in single line
   pdf.setFontSize(10)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.secondary)
@@ -104,13 +102,13 @@ export const generateResumePDF = (data: PortfolioData) => {
     data.personal.location,
     data.personal.email,
     data.personal.phone || '',
-    data.personal.linkedin.replace('https://www.linkedin.com/in/', 'in/')
+    data.personal.linkedin.replace('https://www.linkedin.com/', '')
   ].filter(info => info).join(' • ')
   
   pdf.text(contactInfo, margin, yPosition)
   yPosition += 15
 
-  // PROFESSIONAL SUMMARY - Clean format
+  // SUMMARY SECTION
   addSectionHeader('Summary')
   pdf.setFontSize(10)
   pdf.setFont('helvetica', 'normal')
@@ -119,21 +117,21 @@ export const generateResumePDF = (data: PortfolioData) => {
   pdf.text(summaryLines, margin, yPosition)
   yPosition += summaryLines.length * 4 + 12
 
-  // PROFESSIONAL EXPERIENCE - Enhanced format
+  // EXPERIENCE SECTION
   addSectionHeader('Experience')
   
   const workExperience = data.experience.filter(exp => exp.type !== 'Education')
   workExperience.forEach((exp) => {
     checkPageBreak(40)
     
-    // Job title - bold and prominent
+    // Job title - bold
     pdf.setFontSize(11)
     pdf.setFont('helvetica', 'bold')
     pdf.setTextColor(...colors.primary)
     pdf.text(exp.title, margin, yPosition)
     yPosition += 5
     
-    // Company, duration, location in professional format
+    // Company, duration, location in one line
     pdf.setFontSize(10)
     pdf.setFont('helvetica', 'normal')
     pdf.setTextColor(...colors.secondary)
@@ -141,7 +139,7 @@ export const generateResumePDF = (data: PortfolioData) => {
     pdf.text(jobDetails, margin, yPosition)
     yPosition += 8
     
-    // Achievements with clean bullet points
+    // Achievements with bullet points
     if (exp.achievements && exp.achievements.length > 0) {
       pdf.setTextColor(...colors.text)
       exp.achievements.forEach(achievement => {
@@ -155,30 +153,28 @@ export const generateResumePDF = (data: PortfolioData) => {
     yPosition += 8
   })
 
-  // KEY PROJECTS - Clean professional format
-  if (data.projects.length > 0) {
-    addSectionHeader('Projects')
+  // PROJECTS SECTION
+  addSectionHeader('Projects')
+  
+  data.projects.slice(0, 3).forEach((project) => {
+    checkPageBreak(25)
     
-    data.projects.slice(0, 3).forEach((project) => {
-      checkPageBreak(25)
-      
-      pdf.setFontSize(11)
-      pdf.setFont('helvetica', 'bold')
-      pdf.setTextColor(...colors.primary)
-      pdf.text(project.title, margin, yPosition)
-      yPosition += 6
-      
-      pdf.setFontSize(10)
-      pdf.setFont('helvetica', 'normal')
-      pdf.setTextColor(...colors.text)
-      pdf.text('•', margin, yPosition)
-      const impactLines = pdf.splitTextToSize(project.impact, contentWidth - 10)
-      pdf.text(impactLines, margin + 8, yPosition)
-      yPosition += impactLines.length * 4 + 8
-    })
-  }
+    pdf.setFontSize(11)
+    pdf.setFont('helvetica', 'bold')
+    pdf.setTextColor(...colors.primary)
+    pdf.text(project.title, margin, yPosition)
+    yPosition += 6
+    
+    pdf.setFontSize(10)
+    pdf.setFont('helvetica', 'normal')
+    pdf.setTextColor(...colors.text)
+    pdf.text('•', margin, yPosition)
+    const impactLines = pdf.splitTextToSize(project.impact, contentWidth - 10)
+    pdf.text(impactLines, margin + 8, yPosition)
+    yPosition += impactLines.length * 4 + 8
+  })
 
-  // EDUCATION - Professional format
+  // EDUCATION SECTION
   const education = data.experience.filter(exp => exp.type === 'Education')
   if (education.length > 0) {
     addSectionHeader('Education')
@@ -212,7 +208,7 @@ export const generateResumePDF = (data: PortfolioData) => {
     })
   }
 
-  // CERTIFICATIONS - Clean format
+  // CERTIFICATIONS SECTION
   if (data.certifications && data.certifications.length > 0) {
     checkPageBreak(30)
     addSectionHeader('Certifications')
@@ -244,6 +240,6 @@ export const generateResumePDF = (data: PortfolioData) => {
   }
 
   // Save with enhanced filename
-  const fileName = `${data.personal.name.replace(/\s+/g, '_')}_Resume_${new Date().toISOString().split('T')[0]}.pdf`
+  const fileName = `${data.personal.name.replace(/\s+/g, '_')}_Resume_Enhanced_${new Date().toISOString().split('T')[0]}.pdf`
   pdf.save(fileName)
 }
