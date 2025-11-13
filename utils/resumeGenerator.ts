@@ -105,7 +105,7 @@ export const generateResumePDF = (data: PortfolioData) => {
   pdf.setFontSize(12)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.titleColor)
-  pdf.text('Full Stack Developer & AI Developer', margin, yPosition)
+  pdf.text('Full Stack Developer | React.js • Node.js • Java', margin, yPosition)
   yPosition += 10
 
   // Contact Information - Better aligned
