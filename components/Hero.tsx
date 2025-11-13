@@ -174,13 +174,9 @@ const Hero = () => {
                 }}
               />
               </div>            </div>
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 opacity-30 group-hover:opacity-50 transition-all duration-500 animate-ping"></div>
-            <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-indigo-400 to-blue-400 opacity-20 group-hover:opacity-40 transition-all duration-700 animate-pulse"></div>
-            
-            {/* Professional status indicator */}
-            <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 rounded-full border-4 border-gray-900 animate-pulse shadow-lg">
-              <div className="w-full h-full bg-green-400 rounded-full animate-ping opacity-75"></div>
-            </div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 opacity-10 group-hover:opacity-20 transition-all duration-500"></div>
+
+
           </div>
         </div>
 
