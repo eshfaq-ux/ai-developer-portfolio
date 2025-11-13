@@ -442,6 +442,9 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
   yPosition += 15
 
   addSectionHeader('Career Objective')
+  pdf.setFontSize(10)
+  pdf.setFont('helvetica', 'normal')
+  pdf.setTextColor(...colors.textColor)
   const objective = 'To secure a position in the IT and Software Development industry where I can apply my expertise in Full Stack Development, Java, and Cloud-based technologies to design innovative, high-performing solutions. My goal is to contribute to cutting-edge digital transformation projects while continuously advancing my technical and leadership skills in a collaborative environment.'
   const objectiveLines = pdf.splitTextToSize(objective, contentWidth)
   pdf.text(objectiveLines, margin, yPosition)
