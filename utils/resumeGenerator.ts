@@ -114,13 +114,13 @@ export const generateResumePDF = (data: PortfolioData) => {
   pdf.setTextColor(...colors.contactColor)
   
   // Left column
-  pdf.text('📍 Srinagar, India | Open to Relocation (India / Abroad)', margin, yPosition)
+  pdf.text('Location: Srinagar, India | Open to Relocation (India / Abroad)', margin, yPosition)
   yPosition += 6
-  pdf.text('📧 eshfaqnabi11@gmail.com', margin, yPosition)
-  pdf.text('📞 +91 6006331941', pageWidth/2, yPosition)
+  pdf.text('Email: eshfaqnabi11@gmail.com', margin, yPosition)
+  pdf.text('Phone: +91 6006331941', pageWidth/2, yPosition)
   yPosition += 6
-  pdf.text('🔗 linkedin.com/in/ashfaq-nabi-6882401b7', margin, yPosition)
-  pdf.text('💻 eshfaq-ux', pageWidth/2, yPosition)
+  pdf.text('LinkedIn: linkedin.com/in/ashfaq-nabi-6882401b7', margin, yPosition)
+  pdf.text('GitHub: eshfaq-ux', pageWidth/2, yPosition)
   yPosition += 20
 
   // PROFESSIONAL SUMMARY
