@@ -116,11 +116,15 @@ export const generateResumePDF = (data: PortfolioData) => {
   pdf.text('Location: Srinagar, India | Open to Relocation (India / Abroad)', margin, yPosition)
   yPosition += 5
   pdf.text('Email: eshfaqnabi11@gmail.com', margin, yPosition)
+  yPosition += 4
   pdf.text('Phone: +91 6006331941 | 0561867486', margin, yPosition)
   yPosition += 5
   pdf.text('LinkedIn: linkedin.com/in/ashfaq-nabi-6882401b7', margin, yPosition)
+  yPosition += 4
   pdf.text('GitHub: eshfaq-ux', margin, yPosition)
-  yPosition += 12
+  yPosition += 4
+  pdf.text('GitLab: @eshfaqnabi11', margin, yPosition)
+  yPosition += 10
 
   // PROFESSIONAL SUMMARY
   addSectionHeader('Professional Summary')
