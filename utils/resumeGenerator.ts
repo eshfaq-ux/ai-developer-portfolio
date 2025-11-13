@@ -142,6 +142,8 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
   // CORE COMPETENCIES
   addSectionHeader('Core Competencies')
   pdf.setFontSize(10)
+  pdf.setFont('helvetica', 'normal')
+  pdf.setTextColor(...colors.textColor)
   
   const competencies = [
     'Full Stack Web Application Development',
@@ -162,8 +164,9 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
     pdf.setTextColor(...colors.bulletColor)
     pdf.text('•', margin, yPosition)
     pdf.setTextColor(...colors.textColor)
-    pdf.text(comp, margin + 8, yPosition)
-    yPosition += 6
+    const compLines = pdf.splitTextToSize(comp, contentWidth - 10)
+    pdf.text(compLines, margin + 8, yPosition)
+    yPosition += compLines.length * 4 + 2
   })
   yPosition += 10
 
