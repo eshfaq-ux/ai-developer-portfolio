@@ -173,7 +173,7 @@ const Hero = () => {
                   filter: 'contrast(1.1) brightness(1.05) saturate(1.1)',
                 }}
               />
-            </div>
+              </div>            </div>
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 opacity-30 group-hover:opacity-50 transition-all duration-500 animate-ping"></div>
             <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-indigo-400 to-blue-400 opacity-20 group-hover:opacity-40 transition-all duration-700 animate-pulse"></div>
             
