@@ -124,7 +124,7 @@ export const generateResumePDF = (data: PortfolioData) => {
 
   // PROFESSIONAL SUMMARY
   addSectionHeader('Professional Summary')
-  pdf.setFontSize(9)
+  pdf.setFontSize(10)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.textColor)
   
@@ -136,11 +136,11 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
   
   const summaryLines = pdf.splitTextToSize(summary, contentWidth)
   pdf.text(summaryLines, margin, yPosition)
-  yPosition += summaryLines.length * 3.5 + 8
+  yPosition += summaryLines.length * 3.8 + 8
 
   // CORE COMPETENCIES
   addSectionHeader('Core Competencies')
-  pdf.setFontSize(9)
+  pdf.setFontSize(10)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.textColor)
   
@@ -165,13 +165,13 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
     pdf.setTextColor(...colors.textColor)
     const compLines = pdf.splitTextToSize(comp, contentWidth - 10)
     pdf.text(compLines, margin + 8, yPosition)
-    yPosition += compLines.length * 3.5 + 1
+    yPosition += compLines.length * 3.8 + 1
   })
   yPosition += 6
 
   // TECHNICAL SKILLS
   addSectionHeader('Technical Skills')
-  pdf.setFontSize(9)
+  pdf.setFontSize(10)
   
   const skillCategories = [
     { label: 'Languages:', skills: 'Java, JavaScript, Python, SQL, HTML, CSS' },
@@ -191,7 +191,7 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
     pdf.setFont('helvetica', 'normal')
     pdf.setTextColor(...colors.textColor)
     pdf.text(category.skills, margin + pdf.getTextWidth(category.label) + 5, yPosition)
-    yPosition += 4
+    yPosition += 4.5
   })
   yPosition += 8
 
