@@ -130,7 +130,7 @@ const Hero = () => {
   }, []) // Removed mousePosition dependency for better performance
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-black pt-20 relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-emerald-950 to-black pt-20 relative overflow-hidden">
       {/* Optimized Animated Particles */}
       <div className="absolute inset-0 pointer-events-none">
         {particles.map(particle => (
