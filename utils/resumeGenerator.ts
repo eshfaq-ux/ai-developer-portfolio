@@ -121,6 +121,9 @@ export const generateResumePDF = (data: PortfolioData) => {
   pdf.text('LinkedIn: linkedin.com/in/ashfaq-nabi-6882401b7', margin, yPosition)
   pdf.text('GitHub: eshfaq-ux', margin + 200, yPosition)
   yPosition += 12
+  pdf.text('LinkedIn: linkedin.com/in/ashfaq-nabi-6882401b7', margin, yPosition)
+  pdf.text('GitHub: eshfaq-ux', margin + 200, yPosition)
+  yPosition += 12
 
   // PROFESSIONAL SUMMARY
   addSectionHeader('Professional Summary')
