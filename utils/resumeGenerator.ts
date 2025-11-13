@@ -120,7 +120,8 @@ export const generateResumePDF = (data: PortfolioData) => {
   pdf.text('Phone: +91 6006331941 | 0561867486', margin, yPosition)
   yPosition += 5
   pdf.text('LinkedIn: linkedin.com/in/ashfaq-nabi-6882401b7', margin, yPosition)
-  pdf.text('GitHub: eshfaq-ux', margin + 250, yPosition)
+  yPosition += 5
+  pdf.text('GitHub: eshfaq-ux', margin, yPosition)
   yPosition += 12
   pdf.text('LinkedIn: linkedin.com/in/ashfaq-nabi-6882401b7', margin, yPosition)
   pdf.text('GitHub: eshfaq-ux', margin + 200, yPosition)
