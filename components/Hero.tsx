@@ -159,17 +159,28 @@ const Hero = () => {
         {/* Enhanced Profile Image */}
         <div className="mb-8 mt-14 flex justify-center">
           <div className="relative group">
-            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 p-1 animate-pulse">
+            <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 p-[3px] shadow-2xl">
+              <div className="w-full h-full rounded-full bg-gradient-to-r from-gray-900 to-gray-800 p-[2px]">
               <Image 
                 src="/1000003500.jpg" 
-                alt={personal.name}
+                alt={`${personal.name} - Full Stack Developer`}
                 width={160}
-                height={160}
-                className="w-full h-full rounded-full object-cover group-hover:scale-110 transition-all duration-500 group-hover:rotate-3"
+                height={176}
+                className="w-full h-full rounded-full object-cover object-center group-hover:scale-105 transition-all duration-700 group-hover:rotate-2 shadow-xl"
+                priority
+                quality={95}
+                style={{
+                  filter: 'contrast(1.1) brightness(1.05) saturate(1.1)',
+                }}
               />
             </div>
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 opacity-30 group-hover:opacity-50 transition-all duration-500 animate-ping"></div>
             <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-indigo-400 to-blue-400 opacity-20 group-hover:opacity-40 transition-all duration-700 animate-pulse"></div>
+            
+            {/* Professional status indicator */}
+            <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 rounded-full border-4 border-gray-900 animate-pulse shadow-lg">
+              <div className="w-full h-full bg-green-400 rounded-full animate-ping opacity-75"></div>
+            </div>
           </div>
         </div>
 
@@ -200,7 +211,7 @@ const Hero = () => {
             </span>
             <span className="text-gray-300 mx-3">&</span>
             <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
-              AI Specialist
+              Software Engineer
             </span>
           </h2>
           
