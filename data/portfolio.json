@@ -8,24 +8,24 @@
     "linkedin": "https://www.linkedin.com/in/ashfaq-nabi-6882401b7/",
     "github": "https://github.com/eshfaq-ux",
     "telegram": "@ashfaqnabi",
-    "location": "Srinagar"
+    "location": "Srinagar, India"
   },
   "about": {
-    "description": "Full Stack Developer with 2+ years of experience building scalable web and AI-driven applications using React, Node.js, and OpenAI APIs. Proven track record of delivering enterprise-grade solutions that reduce operational costs by 35% and achieve 95% system reliability. Specialized in workflow automation, prompt engineering, and modern SaaS development.",
+    "description": "Innovative and results-driven Software Developer with a strong academic foundation and over 1.5 years of combined internship and freelance experience in full-stack web development, backend systems, and software engineering. Proficient in building high-performance, scalable web applications using React.js, Node.js, Express.js, MongoDB, and Spring Boot, with strong knowledge of Java, OOP principles, and RESTful API design. Holds a Master of Computer Applications (MCA, 2023) from BGSB University, achieving academic excellence with a CGPA of 8.50. Adept at applying modern development practices, integrating cloud and AI-driven tools, and designing reliable software architectures that meet real-world business needs. Motivated to work in dynamic IT environments where innovation, learning, and impact converge — with a strong interest in backend engineering, cloud-based deployment, and intelligent automation.",
     "keywords": ["Full Stack Development", "React.js", "Node.js", "JavaScript", "TypeScript", "MongoDB", "PostgreSQL", "REST APIs", "GraphQL", "Docker", "Git", "TailwindCSS", "Next.js", "Express.js", "Firebase", "Redis", "CI/CD", "Performance Optimization"]
   },
   "skills": {
     "ai_ml": ["Prompt Engineering", "OpenAI GPT", "LangChain", "Hugging Face", "TensorFlow", "Machine Learning", "Natural Language Processing", "AI Chatbots"],
-    "programming": ["JavaScript", "TypeScript", "Python", "React", "Next.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "GraphQL", "REST APIs"],
-    "tools": ["Docker", "AWS", "Vercel", "Git", "Figma", "Postman", "VS Code", "Linux"],
+    "programming": ["Java", "JavaScript", "Python", "SQL", "HTML", "CSS", "React.js", "Node.js", "Express.js", "Spring Boot", "Django", "Bootstrap"],
+    "tools": ["MongoDB", "MySQL", "PostgreSQL", "AWS", "Vercel", "Render", "Git", "GitHub", "Postman", "VS Code", "Eclipse", "Figma"],
     "automation": ["n8n", "Zapier", "Make.com", "Workflow Automation", "API Integration", "Process Optimization", "Business Intelligence"]
   },
   "projects": [
     {
       "id": 1,
-      "title": "LinkVault - URL Shortening Service",
-      "description": "A modern, full-stack URL shortening service built with React, Node.js, and PostgreSQL. LinkVault provides enterprise-grade features including analytics, password protection, and user management with real-time tracking capabilities.",
-      "tech": ["React", "Node.js", "PostgreSQL", "Vercel", "JWT", "Tailwind CSS", "Framer Motion", "Zustand"],
+      "title": "LinkVault – URL Shortening Service",
+      "description": "Developed a secure, scalable URL shortening platform with analytics, authentication, and user dashboards. Designed and implemented RESTful APIs for user registration, URL generation, and usage statistics. Integrated JWT-based authentication for user access control and session management. Delivered an interactive frontend interface using React.js and Chart.js for tracking link performance.",
+      "tech": ["Node.js", "Express.js", "MongoDB", "React.js", "JWT"],
       "impact": "Built scalable URL shortening platform with 95% uptime, supporting unlimited users with enterprise security features",
       "github": "https://gitlab.com/eshfaqnabi11/linkvault",
       "demo": "https://linkvault-two.vercel.app/",
@@ -33,9 +33,9 @@
     },
     {
       "id": 2,
-      "title": "Intelligent Workflow Automation System",
-      "description": "Developed an AI-powered workflow automation platform that streamlined business operations for 50+ companies, reducing operational costs by 35%",
-      "tech": ["React", "Node.js", "MongoDB", "n8n", "OpenAI"],
+      "title": "Workflow Automation System",
+      "description": "Designed and deployed an intelligent process automation tool connecting APIs for repetitive business workflows. Integrated third-party services (Google Sheets, CRMs, and Notion) for real-time synchronization. Reduced operational time by up to 35% through workflow optimization. Delivered cloud-based architecture ensuring scalability and minimal latency.",
+      "tech": ["Node.js", "n8n", "MongoDB", "REST APIs"],
       "impact": "Reduced operational costs by 35% for 50+ companies",
       "github": "https://github.com/<username>/workflow-automation",
       "demo": "https://demo-link.com",
@@ -43,87 +43,125 @@
     },
     {
       "id": 3,
-      "title": "AI Chatbot Framework",
-      "description": "Created a reusable AI chatbot framework with advanced prompt engineering, deployed across multiple client projects with 95% accuracy",
-      "tech": ["Python", "LangChain", "FastAPI", "OpenAI", "Docker"],
+      "title": "AI-Powered Resume Builder (Capstone Project)",
+      "description": "Conceptualized and developed an AI-driven web platform that automatically generates keyword-optimized resumes. Implemented backend logic for user data parsing and content generation using OpenAI API. Designed a dynamic, responsive UI for real-time resume previews. Delivered this as a final-year project during MCA, achieving top academic evaluation.",
+      "tech": ["React.js", "Node.js", "OpenAI API"],
       "impact": "Achieved 95% accuracy across multiple deployments",
-      "github": "https://github.com/<username>/ai-chatbot-framework",
+      "github": "https://github.com/<username>/ai-resume-builder",
       "demo": "https://demo-link.com",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "Personal Portfolio Website",
+      "description": "Created and deployed a responsive developer portfolio highlighting projects, certifications, and skills. Applied SEO best practices, optimized image rendering, and ensured cross-device compatibility. Integrated contact form APIs for automated response handling.",
+      "tech": ["React.js", "Tailwind CSS"],
+      "impact": "Professional portfolio showcasing technical expertise and project achievements",
+      "github": "https://github.com/eshfaq-ux/portfolio",
+      "demo": "https://portfolio-demo.com",
       "featured": false
     }
   ],
   "experience": [
     {
-      "title": "Full Stack Developer",
-      "company": "Freelance",
-      "duration": "01/2023 - Present",
-      "location": "Remote",
-      "type": "Freelance",
-      "description": "Built and shipped multiple full-stack web applications, translating product requirements and Figma wireframes into responsive, accessible UI. Integrated REST/GraphQL APIs, handled authentication, state management, caching, and error handling.",
+      "title": "Software Development Intern",
+      "company": "A2IT Online",
+      "duration": "6 Months (2023)",
+      "location": "Remote / Chandigarh-based Company",
+      "type": "Internship",
+      "description": "Completed a structured Full Stack Development Internship focused on Python, Django, and REST API frameworks.",
       "achievements": [
-        "Built and shipped multiple full-stack web applications from concept to production",
-        "Translated product requirements and Figma wireframes into responsive, accessible UI",
-        "Integrated REST/GraphQL APIs with authentication, state management, and caching",
-        "Optimized applications for performance and reliability with comprehensive testing",
-        "Managed Git-based version control, CI/CD deployment pipelines, and code documentation standards",
-        "Troubleshot production issues, improving observability and system reliability"
+        "Completed a structured Full Stack Development Internship focused on Python, Django, and REST API frameworks.",
+        "Developed multi-tiered web applications that included backend APIs, frontend integration, and authentication systems.",
+        "Collaborated with senior mentors to refine code quality, improve performance, and follow software development best practices.",
+        "Applied MVC architecture principles to design modular, maintainable systems.",
+        "Participated in debugging sessions, resolving UI inconsistencies, and testing database connectivity.",
+        "Strengthened practical understanding of software lifecycles, agile development, and cloud deployment workflows."
       ],
-      "technologies": ["React.js", "Next.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "TypeScript", "JavaScript", "HTML5", "CSS3", "TailwindCSS", "Redux", "Docker", "Git", "Firebase", "Redis"]
+      "technologies": ["Python", "Django", "REST APIs", "MVC Architecture", "Web Development"]
     },
     {
-      "title": "MCA Graduate",
-      "company": "BGSB University",
-      "duration": "2021 - 12/2023",
+      "title": "Freelance Full Stack Developer",
+      "company": "Freelance",
+      "duration": "Jan 2024 – Dec 2024",
+      "location": "Remote",
+      "type": "Freelance",
+      "description": "Designed and delivered end-to-end web applications for startups and entrepreneurs using the MERN stack.",
+      "achievements": [
+        "Designed and delivered end-to-end web applications for startups and entrepreneurs using the MERN stack (MongoDB, Express.js, React.js, Node.js).",
+        "Engineered robust backend APIs with Node.js, implemented secure authentication, and integrated modern frontend interfaces with React.js.",
+        "Provided scalable deployment solutions using AWS and Vercel, improving uptime and application performance.",
+        "Maintained version control, project documentation, and continuous integration pipelines.",
+        "Enhanced debugging, refactoring, and testing processes through iterative real-world deployments.",
+        "Developed strong project management, communication, and remote collaboration skills while working directly with clients."
+      ],
+      "technologies": ["MERN Stack", "MongoDB", "Express.js", "React.js", "Node.js", "AWS", "Vercel"]
+    },
+    {
+      "title": "Web Development Intern",
+      "company": "Abun.com",
+      "duration": "6 Months (2025)",
+      "location": "Remote",
+      "type": "Internship",
+      "description": "Worked as a Frontend and Backend Developer Intern, contributing to the development and enhancement of multiple live web projects.",
+      "achievements": [
+        "Worked as a Frontend and Backend Developer Intern, contributing to the development and enhancement of multiple live web projects.",
+        "Implemented responsive interfaces and reusable UI components using React.js, Tailwind CSS, and Bootstrap.",
+        "Supported backend development tasks using Node.js and Express.js, ensuring smooth data flow between server and frontend.",
+        "Collaborated with product managers and senior engineers to develop, test, and deploy new features.",
+        "Conducted performance audits and implemented optimization techniques, resulting in faster page load times and better API efficiency.",
+        "Actively participated in agile sprints, code reviews, and documentation updates to maintain software consistency."
+      ],
+      "technologies": ["React.js", "Node.js", "Express.js", "Tailwind CSS", "Bootstrap"]
+    },
+    {
+      "title": "Master of Computer Applications (MCA)",
+      "company": "Baba Ghulam Shah Badshah University (BGSB University)",
+      "duration": "2021 - 2023",
       "location": "Srinagar",
       "type": "Education",
       "description": "Achieved academic excellence with a strong CGPA of 8.50 and consistent top performance in advanced subjects like Cloud Computing, Machine Learning, and Full-Stack Development.",
       "achievements": [
         "Achieved academic excellence with CGPA of 8.50",
-        "Capstone Project: AI-Powered Resume Builder using React & Node.js",
-        "Top performance in Cloud Computing, Machine Learning, and Full-Stack Development",
-        "Completed capstone project: Online Learning and Recruitment platform with AI-Powered Resume Builder",
-        "Led team-based project implementing blockchain-based payment solutions",
-        "Demonstrated leadership and technical expertise in collaborative projects"
+        "Specialized in Full Stack Development, Cloud Computing, and Artificial Intelligence",
+        "Coursework Highlights: Advanced Java Programming, Software Engineering, Web Technologies, Cloud Architecture, Data Science, Machine Learning, Database Management Systems",
+        "Capstone Project: AI-Powered Resume Builder — developed using React.js, Node.js, and OpenAI API integration",
+        "Contributed to research seminars on cloud deployment automation and AI-assisted code generation",
+        "Achieved consistent academic distinction across all semesters and received faculty commendations for innovation and code efficiency"
       ],
-      "technologies": ["React", "Node.js", "MongoDB", "Machine Learning", "Cloud Computing", "Blockchain", "Full-Stack Development"]
+      "technologies": ["Java", "React.js", "Node.js", "OpenAI API", "Cloud Computing", "Machine Learning"]
     },
     {
-      "title": "BCA Graduate",
-      "company": "Govt Degree College Ganderbal",
-      "duration": "2018 - 12/2021",
+      "title": "Bachelor of Computer Applications (BCA)",
+      "company": "Govt. Degree College, Ganderbal (University of Kashmir)",
+      "duration": "2018 - 2021",
       "location": "Srinagar",
       "type": "Education",
-      "description": "Graduated with distinction and consistently maintained a high CGPA of 7.20. Ranked among the top performers in core subjects like Data Structures, DBMS, and Web Technologies.",
+      "description": "Built a solid foundation in Programming Fundamentals, Data Structures, DBMS, Operating Systems, and Networking.",
       "achievements": [
         "Graduated with distinction maintaining CGPA of 7.20",
-        "Ranked among top performers in Data Structures, DBMS, and Web Technologies",
-        "Developed major final-year project: Smart Library Management System using MERN stack",
-        "Earned faculty appreciation for technical excellence and project innovation"
+        "Built a solid foundation in Programming Fundamentals, Data Structures, DBMS, Operating Systems, and Networking",
+        "Hands-on experience in C, C++, Java, and Web Development through lab projects and coursework",
+        "Final-year project: Online Attendance Management System using PHP and MySQL, focusing on data integrity and efficient record retrieval",
+        "Developed analytical and coding proficiency essential for real-world software projects"
       ],
-      "technologies": ["MERN Stack", "Data Structures", "DBMS", "Web Technologies", "JavaScript", "HTML", "CSS"]
+      "technologies": ["C", "C++", "Java", "PHP", "MySQL", "Data Structures", "DBMS"]
     }
   ],
   "certifications": [
     {
       "title": "Full Stack Development in Python and Django",
-      "issuer": "A2IT Online Company",
+      "issuer": "A2IT Online",
       "date": "2023",
       "description": "Certified professional program covering full-stack development with Python and Django framework",
       "certificate": "/certificates/1692443269796.jpeg"
     },
     {
-      "title": "Prompt Engineering Certificate",
-      "issuer": "Professional Certification Program",
+      "title": "Prompt Engineering Professional Certificate",
+      "issuer": "Professional Program",
       "date": "2024",
       "description": "Advanced certification in prompt engineering techniques, AI model optimization, and conversational AI development",
       "certificate": "/certificates/prompt-engineering-certificate.pdf"
-    },
-    {
-      "title": "LangChain & OpenAI Developer Training",
-      "issuer": "Professional Development Program",
-      "date": "In Progress",
-      "description": "Advanced training in LangChain framework and OpenAI API integration for enterprise AI applications",
-      "certificate": ""
     }
   ]
 }
