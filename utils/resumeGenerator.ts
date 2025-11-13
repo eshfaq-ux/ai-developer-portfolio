@@ -78,8 +78,8 @@ export const generateResumePDF = (data: PortfolioData) => {
   }
 
   const addSectionHeader = (title: string) => {
-    checkPageBreak(20)
-    pdf.setFontSize(14)
+    checkPageBreak(15)
+    pdf.setFontSize(12)
     pdf.setFont('helvetica', 'bold')
     pdf.setTextColor(...colors.headerColor)
     pdf.text(title.toUpperCase(), margin, yPosition)
@@ -90,42 +90,41 @@ export const generateResumePDF = (data: PortfolioData) => {
     pdf.setLineWidth(1.5)
     pdf.line(margin, yPosition + 2, margin + textWidth, yPosition + 2)
     
-    yPosition += 15
+    yPosition += 10
     pdf.setTextColor(...colors.textColor)
   }
 
   // HEADER SECTION - Name
-  pdf.setFontSize(24)
+  pdf.setFontSize(22)
   pdf.setFont('helvetica', 'bold')
   pdf.setTextColor(...colors.nameColor)
   pdf.text('ASHFAQ NABI', margin, yPosition)
-  yPosition += 12
+  yPosition += 8
 
   // Title
-  pdf.setFontSize(14)
+  pdf.setFontSize(12)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.titleColor)
   pdf.text('Full Stack Developer & AI Developer', margin, yPosition)
-  yPosition += 15
+  yPosition += 10
 
-  // Contact Information - Two columns
-  pdf.setFontSize(10)
+  // Contact Information - Better aligned
+  pdf.setFontSize(9)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.contactColor)
   
-  // Left column
   pdf.text('Location: Srinagar, India | Open to Relocation (India / Abroad)', margin, yPosition)
-  yPosition += 6
+  yPosition += 5
   pdf.text('Email: eshfaqnabi11@gmail.com', margin, yPosition)
-  pdf.text('Phone: +91 6006331941', pageWidth/2, yPosition)
-  yPosition += 6
+  pdf.text('Phone: +91 6006331941', margin + 200, yPosition)
+  yPosition += 5
   pdf.text('LinkedIn: linkedin.com/in/ashfaq-nabi-6882401b7', margin, yPosition)
-  pdf.text('GitHub: eshfaq-ux', pageWidth/2, yPosition)
-  yPosition += 20
+  pdf.text('GitHub: eshfaq-ux', margin + 200, yPosition)
+  yPosition += 12
 
   // PROFESSIONAL SUMMARY
   addSectionHeader('Professional Summary')
-  pdf.setFontSize(11)
+  pdf.setFontSize(9)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.textColor)
   
@@ -137,11 +136,11 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
   
   const summaryLines = pdf.splitTextToSize(summary, contentWidth)
   pdf.text(summaryLines, margin, yPosition)
-  yPosition += summaryLines.length * 4 + 15
+  yPosition += summaryLines.length * 3.5 + 8
 
   // CORE COMPETENCIES
   addSectionHeader('Core Competencies')
-  pdf.setFontSize(10)
+  pdf.setFontSize(9)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.textColor)
   
@@ -160,19 +159,19 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
   ]
   
   competencies.forEach(comp => {
-    checkPageBreak(8)
+    checkPageBreak(6)
     pdf.setTextColor(...colors.bulletColor)
     pdf.text('•', margin, yPosition)
     pdf.setTextColor(...colors.textColor)
     const compLines = pdf.splitTextToSize(comp, contentWidth - 10)
     pdf.text(compLines, margin + 8, yPosition)
-    yPosition += compLines.length * 4 + 2
+    yPosition += compLines.length * 3.5 + 1
   })
-  yPosition += 10
+  yPosition += 6
 
   // TECHNICAL SKILLS
   addSectionHeader('Technical Skills')
-  pdf.setFontSize(10)
+  pdf.setFontSize(9)
   
   const skillCategories = [
     { label: 'Languages:', skills: 'Java, JavaScript, Python, SQL, HTML, CSS' },
@@ -185,16 +184,16 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
   ]
   
   skillCategories.forEach(category => {
-    checkPageBreak(8)
+    checkPageBreak(6)
     pdf.setFont('helvetica', 'bold')
     pdf.setTextColor(...colors.headerColor)
     pdf.text(category.label, margin, yPosition)
     pdf.setFont('helvetica', 'normal')
     pdf.setTextColor(...colors.textColor)
     pdf.text(category.skills, margin + pdf.getTextWidth(category.label) + 5, yPosition)
-    yPosition += 6
+    yPosition += 4
   })
-  yPosition += 15
+  yPosition += 8
 
   // PROFESSIONAL EXPERIENCE & INTERNSHIPS
   addSectionHeader('Professional Experience & Internships')
