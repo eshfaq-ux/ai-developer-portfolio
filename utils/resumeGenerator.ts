@@ -79,7 +79,7 @@ export const generateResumePDF = (data: PortfolioData) => {
 
   const addSectionHeader = (title: string) => {
     checkPageBreak(15)
-    pdf.setFontSize(14)
+    pdf.setFontSize(12)
     pdf.setFont('helvetica', 'bold')
     pdf.setTextColor(...colors.headerColor)
     pdf.text(title.toUpperCase(), margin, yPosition)
@@ -95,21 +95,21 @@ export const generateResumePDF = (data: PortfolioData) => {
   }
 
   // HEADER SECTION - Name
-  pdf.setFontSize(24)
+  pdf.setFontSize(22)
   pdf.setFont('helvetica', 'bold')
   pdf.setTextColor(...colors.nameColor)
   pdf.text('ASHFAQ NABI', margin, yPosition)
   yPosition += 8
 
   // Title
-  pdf.setFontSize(14)
+  pdf.setFontSize(12)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.titleColor)
   pdf.text('Full Stack Developer & AI Developer', margin, yPosition)
   yPosition += 10
 
   // Contact Information - Better aligned
-  pdf.setFontSize(11)
+  pdf.setFontSize(9)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.contactColor)
   
@@ -124,7 +124,7 @@ export const generateResumePDF = (data: PortfolioData) => {
 
   // PROFESSIONAL SUMMARY
   addSectionHeader('Professional Summary')
-  pdf.setFontSize(12)
+  pdf.setFontSize(10)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.textColor)
   
@@ -140,7 +140,7 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
 
   // CORE COMPETENCIES
   addSectionHeader('Core Competencies')
-  pdf.setFontSize(12)
+  pdf.setFontSize(10)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.textColor)
   
@@ -171,7 +171,7 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
 
   // TECHNICAL SKILLS
   addSectionHeader('Technical Skills')
-  pdf.setFontSize(12)
+  pdf.setFontSize(10)
   
   const skillCategories = [
     { label: 'Languages:', skills: 'Java, JavaScript, Python, SQL, HTML, CSS' },
@@ -240,19 +240,19 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
   experiences.forEach(exp => {
     checkPageBreak(50)
     
-    pdf.setFontSize(14)
+    pdf.setFontSize(12)
     pdf.setFont('helvetica', 'bold')
     pdf.setTextColor(...colors.textColor)
     pdf.text(exp.title, margin, yPosition)
     yPosition += 8
     
-    pdf.setFontSize(13)
+    pdf.setFontSize(11)
     pdf.setFont('helvetica', 'bold')
     pdf.setTextColor(...colors.headerColor)
     pdf.text(exp.duration, margin, yPosition)
     yPosition += 10
     
-    pdf.setFontSize(12)
+    pdf.setFontSize(10)
     pdf.setFont('helvetica', 'normal')
     pdf.setTextColor(...colors.textColor)
     
@@ -319,13 +319,13 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
   projects.forEach(project => {
     checkPageBreak(40)
     
-    pdf.setFontSize(13)
+    pdf.setFontSize(11)
     pdf.setFont('helvetica', 'bold')
     pdf.setTextColor(...colors.textColor)
     pdf.text(project.title, margin, yPosition)
     yPosition += 8
     
-    pdf.setFontSize(12)
+    pdf.setFontSize(10)
     pdf.setFont('helvetica', 'bold')
     pdf.setTextColor(...colors.headerColor)
     pdf.text(project.tech, margin, yPosition)
@@ -379,13 +379,13 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
   educationData.forEach(edu => {
     checkPageBreak(40)
     
-    pdf.setFontSize(13)
+    pdf.setFontSize(11)
     pdf.setFont('helvetica', 'bold')
     pdf.setTextColor(...colors.textColor)
     pdf.text(edu.degree, margin, yPosition)
     yPosition += 8
     
-    pdf.setFontSize(12)
+    pdf.setFontSize(10)
     pdf.setFont('helvetica', 'normal')
     pdf.setTextColor(...colors.headerColor)
     pdf.text(edu.institution, margin, yPosition)
@@ -421,13 +421,13 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
   certifications.forEach(cert => {
     checkPageBreak(15)
     
-    pdf.setFontSize(13)
+    pdf.setFontSize(11)
     pdf.setFont('helvetica', 'bold')
     pdf.setTextColor(...colors.textColor)
     pdf.text(cert.title, margin, yPosition)
     yPosition += 8
     
-    pdf.setFontSize(12)
+    pdf.setFontSize(10)
     pdf.setFont('helvetica', 'normal')
     pdf.setTextColor(...colors.textColor)
     const descLines = pdf.splitTextToSize(cert.description, contentWidth)
@@ -437,14 +437,14 @@ Motivated to work in dynamic IT environments where innovation, learning, and imp
 
   // INTERESTS & CAREER OBJECTIVE
   addSectionHeader('Interests')
-  pdf.setFontSize(12)
+  pdf.setFontSize(10)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.textColor)
   pdf.text('Software Automation • AI & Cloud Technologies • SaaS Product Design • Backend Optimization • Full Stack Development • Continuous Learning', margin, yPosition)
   yPosition += 15
 
   addSectionHeader('Career Objective')
-  pdf.setFontSize(12)
+  pdf.setFontSize(10)
   pdf.setFont('helvetica', 'normal')
   pdf.setTextColor(...colors.textColor)
   const objective = 'To secure a position in the IT and Software Development industry where I can apply my expertise in Full Stack Development, Java, and Cloud-based technologies to design innovative, high-performing solutions. My goal is to contribute to cutting-edge digital transformation projects while continuously advancing my technical and leadership skills in a collaborative environment.'
